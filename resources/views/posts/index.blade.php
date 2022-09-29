@@ -20,9 +20,18 @@
                 <small>Tanggal : {{$post->created_at}}</small>
             </div>
             @endforeach
+            <br>
+            Halaman : {{ $posts->currentPage()}} <br/>
+            Jumlah Data : {{$posts->total()}} <br/>
+            Data Per Halaman : {{$posts->perPage()}} <br/>
+            <div class="d-flex">
+                {{ $posts -> links() }}
+            </div>
         @else
             <h3>Tidak ada data.</h3>
         @endif
+
     </div>
+
 </div>
 @endsection
