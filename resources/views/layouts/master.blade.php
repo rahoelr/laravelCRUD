@@ -21,6 +21,7 @@
         }
 
         .judul{
+            margin-top: 1rem;
             text-align: center;
         }
 
