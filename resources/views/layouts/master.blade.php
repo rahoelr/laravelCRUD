@@ -30,6 +30,13 @@
             
         }
 
+        .containerAuth {
+            margin: 20px 50px 50px 50px;
+            border: 1px solid black;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
     </style>
 </head>
 <body>
