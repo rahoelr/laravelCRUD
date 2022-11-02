@@ -20,6 +20,14 @@
                 <small>Tanggal : {{$project->created_at}}</small>
             </div>
             @endforeach
+            <br>
+            Halaman : {{ $projects->currentPage()}} <br/>
+            Jumlah Data : {{$projects->total()}} <br/>
+            Data Per Halaman : {{$projects->perPage()}} <br/>
+            <br>
+            <div class="d-flex">
+                {{ $projects -> links() }}
+            </div>
         @else
             <h3>Tidak ada data.</h3>
         @endif

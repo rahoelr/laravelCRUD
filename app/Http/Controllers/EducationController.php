@@ -121,4 +121,9 @@ class EducationController extends Controller
         $educations->delete();
         return redirect('educations')->with('success','Berhasil Hapus Data');
     }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 }
