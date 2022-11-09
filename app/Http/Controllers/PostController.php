@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -44,14 +46,26 @@ class PostController extends Controller
         $validateData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
+            'picture' => 'image|nullable|max:1999'
         ]);
 
-        $post = new Post;   
-        $post -> title = $request->input('title');
-        $post -> description = $request -> input('description');
-        $post -> save();
+        if ($request->hasFile('picture')) {
+            $filenameWithExt = $request->file('picture')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('picture')->getClientOriginalExtension();
+            $filenameSimpan = $filename . '_' . time() . '.' . $extension;
+            $path = $request->file('picture')->storeAs('public/posts_image', $filenameSimpan);
+        } else {
+            $filenameSimpan = 'noimage.png';
+        }
 
-        return redirect('posts')->with('success','Berhasil Menambahkan Data');
+        $post = new Post;
+        $post->picture = $filenameSimpan;
+        $post->title = $request->input('title');
+        $post->description = $request->input('description');
+        $post->save();
+
+        return redirect('posts')->with('success', 'Berhasil Menambahkan Data');
     }
 
 
@@ -105,7 +119,7 @@ class PostController extends Controller
             'description' => $request->description
         ]);
 
-        return redirect('posts')->with('success','Berhasil Update Data');
+        return redirect('posts')->with('success', 'Berhasil Update Data');
     }
 
     /**
@@ -117,12 +131,13 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
-        $post -> delete();
-        return redirect('posts')->with('success','Berhasil Hapus Data');
+        File::delete(public_path() . '/public/posts_image/' . $post->picture);
+        $post->delete();
+        return redirect('posts')->with('success', 'Berhasil Hapus Data');
     }
 
     public function __construct()
     {
-        $this->middleware('auth', ["except"=>["index","show"]]);
+        $this->middleware('auth', ["except" => ["index", "show"]]);
     }
 }

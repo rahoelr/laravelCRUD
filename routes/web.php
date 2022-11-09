@@ -59,7 +59,7 @@ Route::resource(
 
 // Route::post('/store','PostController') ->name('store');
 Auth::routes([
-    'reset' => false,
+    'reset' => true,
 ]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
