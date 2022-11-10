@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('lightbox2/dist/css/lightbox.min.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <title>@yield('Title','Belajar Blade Templating New')</title>
     <style>
@@ -49,5 +50,6 @@
     @yield('konten')
     <br><br><br><br><br>
     @include('layouts.footer')
+    <script src="{{ asset('lightbox2/dist/js/lightbox-plus-jquery.min.js')}}"></script>
 </body>
 </html>

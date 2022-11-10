@@ -22,12 +22,13 @@
                         <div class="alert alert-danger">{{$message}}</div>
                     @enderror
                 </div>
+                <br>
                 <div class="form-group">
                     <label for="input-file">File Input</label>
                     <div class="input-group">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="input-file" name="picture">
-                            <label for="custom-file-label" for="input-file">Choose File</label>
+                            <label for="custom-file-label" for="input-file" accecpt="posts_image/*">Choose File</label>
                         </div>
                     </div>
                 </div>

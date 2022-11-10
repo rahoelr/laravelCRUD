@@ -11,6 +11,9 @@
         <a class="nav-link" href="/about">About</a>
         <a class="nav-link" href="/projects">Project</a>
         <a class="nav-link" href="/posts">Blog</a>
+        <a class="nav-link" href="{{ url('/gallery') }}">
+          Gallery
+          </a>
       </div>
     </div>
   </div>
