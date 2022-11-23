@@ -7,6 +7,19 @@ use App\Models\Post;
 
 class GalleryController extends Controller
 {
+/**
+* @OA\Get(
+* path="/api/gallery",
+* tags={"gallery"},
+* summary="Returns a Sample Gallery response",
+* description="A sample Image",
+* operationId="greet",
+* @OA\Response(
+* response="default",
+* description="successful operation"
+* )
+* )
+*/
     /**
      * Display a listing of the resource.
      *

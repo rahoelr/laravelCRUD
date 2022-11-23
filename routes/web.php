@@ -9,6 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\GreetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,15 @@ Route::resource(
     'App\Http\Controllers\EducationController'
 );
 
+Route::resource(
+    'gallery',
+    'App\Http\Controllers\GalleryController'
+);
+
+Route::resource(
+    'gallery2',
+    'App\Http\Controllers\GalleryController'
+);
 
 // Route::post('/store','PostController') ->name('store');
 Auth::routes([
@@ -80,3 +90,7 @@ Route::get('/send-email', [SendEmailController::class, 'index'])->name('kirim-em
 Route::post('/post-email', [SendEmailController::class, 'store'])->name('post-email');
 
 Route::resource('gallery', 'App\Http\Controllers\GalleryController');
+
+Route::get('/greet',[GreetController::class, 'greet'])->name("greeting");
+
+Route::get('/gallery',[GalleryController::class, 'index'])->name("gallery");
